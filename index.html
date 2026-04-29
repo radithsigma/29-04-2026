@@ -1,0 +1,1448 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🔥 Jadwal PR — Charizard Edition</title>
+  <script src="data-guru.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Nunito:wght@400;600;700;800&display=swap');
+
+    :root {
+      --fire1: #ff6a00;
+      --fire2: #ee0979;
+      --fire3: #ffb347;
+      --fire4: #ff4500;
+      --dark1: #1a0a00;
+      --dark2: #2d1200;
+      --dark3: #3d1a00;
+      --gold:  #ffd700;
+      --cream: #fff3e0;
+      --card-bg: rgba(61,26,0,0.7);
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: var(--dark1);
+      min-height: 100vh;
+      color: var(--cream);
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* ===== CHARIZARD FIRE BG ===== */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 80%, rgba(255,106,0,0.18) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(238,9,121,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse at 50% 50%, rgba(255,69,0,0.08) 0%, transparent 70%),
+        linear-gradient(180deg, #1a0a00 0%, #2d1200 40%, #1a0800 100%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ===== FLAME PARTICLES ===== */
+    .flames {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      height: 120px;
+      pointer-events: none;
+      z-index: 1;
+      overflow: hidden;
+    }
+    .flame {
+      position: absolute;
+      bottom: 0;
+      width: 30px;
+      border-radius: 50% 50% 20% 20%;
+      animation: flameRise 2s ease-in infinite;
+      opacity: 0;
+    }
+    @keyframes flameRise {
+      0%   { transform: scaleX(1) translateY(0);   opacity: 0.9; }
+      50%  { transform: scaleX(0.8) translateY(-60px); opacity: 0.6; }
+      100% { transform: scaleX(0.5) translateY(-120px); opacity: 0; }
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      padding: 28px 20px 18px;
+      background: linear-gradient(180deg, rgba(255,106,0,0.15) 0%, transparent 100%);
+      border-bottom: 2px solid rgba(255,106,0,0.3);
+    }
+
+    .charizard-svg {
+      width: 110px;
+      height: 110px;
+      margin: 0 auto 10px;
+      display: block;
+      filter: drop-shadow(0 0 18px #ff6a00) drop-shadow(0 0 40px #ff4500);
+      animation: floatChar 3s ease-in-out infinite;
+    }
+    @keyframes floatChar {
+      0%,100% { transform: translateY(0) rotate(-2deg); }
+      50%      { transform: translateY(-10px) rotate(2deg); }
+    }
+
+    header h1 {
+      font-family: 'Bangers', cursive;
+      font-size: 2.8rem;
+      letter-spacing: 4px;
+      background: linear-gradient(90deg, #ff6a00, #ffd700, #ff4500);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: none;
+      filter: drop-shadow(0 0 10px rgba(255,106,0,0.8));
+    }
+
+    header p {
+      color: #ffb347;
+      margin-top: 6px;
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .tanggal-info {
+      position: relative; z-index: 10;
+      text-align: center;
+      padding: 8px;
+      font-size: 0.88rem;
+      color: var(--gold);
+      background: rgba(255,106,0,0.08);
+      border-bottom: 1px solid rgba(255,106,0,0.15);
+    }
+
+    /* ===== CONTAINER ===== */
+    .container {
+      position: relative; z-index: 10;
+      max-width: 1100px;
+      margin: 24px auto;
+      padding: 0 16px;
+    }
+
+    /* ===== TOP BUTTONS ===== */
+    .top-btns {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+
+    .fire-btn {
+      padding: 11px 28px;
+      border: none;
+      border-radius: 30px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all 0.25s;
+      letter-spacing: 0.5px;
+    }
+
+    .fire-btn.primary {
+      background: linear-gradient(135deg, #ff6a00, #ee0979);
+      color: #fff;
+      box-shadow: 0 4px 20px rgba(255,106,0,0.5);
+    }
+    .fire-btn.primary:hover {
+      transform: scale(1.06);
+      box-shadow: 0 6px 28px rgba(255,106,0,0.7);
+    }
+
+    .fire-btn.secondary {
+      background: linear-gradient(135deg, #ffd700, #ff8c00);
+      color: #1a0a00;
+      box-shadow: 0 4px 20px rgba(255,215,0,0.4);
+    }
+    .fire-btn.secondary:hover {
+      transform: scale(1.06);
+      box-shadow: 0 6px 28px rgba(255,215,0,0.6);
+    }
+
+    /* ===== TABS ===== */
+    .hari-tabs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+
+    .tab-btn {
+      padding: 10px 22px;
+      border: 2px solid rgba(255,106,0,0.25);
+      border-radius: 30px;
+      cursor: pointer;
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 700;
+      transition: all 0.3s;
+      background: rgba(61,26,0,0.5);
+      color: #ffb347;
+    }
+    .tab-btn:hover {
+      background: rgba(255,106,0,0.25);
+      color: #fff;
+      transform: translateY(-2px);
+      border-color: #ff6a00;
+    }
+    .tab-btn.active {
+      background: linear-gradient(135deg, #ff6a00, #ee0979);
+      color: #fff;
+      border-color: transparent;
+      box-shadow: 0 4px 18px rgba(255,106,0,0.55);
+      transform: translateY(-2px);
+    }
+
+    /* ===== PANEL ===== */
+    .hari-panel { display: none; animation: fadeIn 0.35s ease; }
+    .hari-panel.active { display: block; }
+    @keyframes fadeIn {
+      from { opacity:0; transform:translateY(12px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+
+    .hari-title {
+      font-family: 'Bangers', cursive;
+      font-size: 1.8rem;
+      letter-spacing: 2px;
+      color: var(--fire3);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-shadow: 0 0 12px rgba(255,179,71,0.5);
+    }
+    .hari-title .badge {
+      background: linear-gradient(135deg, #ff6a00, #ee0979);
+      color: #fff;
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 3px 12px;
+      border-radius: 20px;
+    }
+
+    /* ===== GRID ===== */
+    .pr-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    /* ===== CARD ===== */
+    .pr-card {
+      background: var(--card-bg);
+      border: 1px solid rgba(255,106,0,0.2);
+      border-radius: 16px;
+      padding: 16px 18px;
+      transition: transform 0.3s, box-shadow 0.3s, opacity 0.3s;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(6px);
+    }
+    .pr-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 5px; height: 100%;
+      border-radius: 5px 0 0 5px;
+    }
+    .pr-card::after {
+      content: '';
+      position: absolute;
+      top: -40%; right: -20%;
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,106,0,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .pr-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 32px rgba(255,106,0,0.25);
+      border-color: rgba(255,106,0,0.4);
+    }
+    .pr-card.done {
+      opacity: 0.5;
+      border-color: rgba(0,200,100,0.3);
+    }
+    .pr-card.done .mapel { text-decoration: line-through; color: #aaa; }
+
+    .pr-card .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 8px;
+    }
+    .pr-card .mapel {
+      font-size: 1rem;
+      font-weight: 800;
+      color: #fff;
+      flex: 1;
+    }
+
+    /* ===== TOMBOL CENTANG / X ===== */
+    .check-btns {
+      display: flex;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+    .btn-check, .btn-x, .btn-del {
+      width: 32px; height: 32px;
+      border: none;
+      border-radius: 50%;
+      font-size: 1rem;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+      font-weight: 900;
+      line-height: 1;
+    }
+    .btn-check {
+      background: linear-gradient(135deg, #00c853, #69f0ae);
+      color: #fff;
+      box-shadow: 0 2px 10px rgba(0,200,83,0.4);
+    }
+    .btn-check:hover { transform: scale(1.15); box-shadow: 0 4px 16px rgba(0,200,83,0.6); }
+    .btn-x {
+      background: linear-gradient(135deg, #ff1744, #ff6b6b);
+      color: #fff;
+      box-shadow: 0 2px 10px rgba(255,23,68,0.4);
+    }
+    .btn-x:hover { transform: scale(1.15); box-shadow: 0 4px 16px rgba(255,23,68,0.6); }
+    .btn-del {
+      background: rgba(255,255,255,0.1);
+      color: #aaa;
+      font-size: 0.8rem;
+    }
+    .btn-del:hover { background: rgba(255,50,50,0.3); color: #fff; transform: scale(1.1); }
+
+    .pr-card .tugas {
+      font-size: 0.87rem;
+      color: #d4b896;
+      line-height: 1.55;
+      margin-bottom: 10px;
+    }
+    .pr-card .deadline {
+      font-size: 0.78rem;
+      color: var(--gold);
+      display: flex; align-items: center; gap: 5px;
+      margin-bottom: 8px;
+    }
+    .pr-card .guru-tag {
+      font-size: 0.75rem;
+      color: #ffb347;
+      background: rgba(255,106,0,0.15);
+      border: 1px solid rgba(255,106,0,0.25);
+      border-radius: 12px;
+      padding: 2px 10px;
+      display: inline-block;
+    }
+    .pr-card .status-label {
+      margin-top: 8px;
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+    .status-label.selesai { color: #69f0ae; }
+    .status-label.belum   { color: #ff6b6b; }
+
+    /* ===== WARNA STRIP PER MAPEL ===== */
+    .color-pkn::before       { background: #ff6a00; }
+    .color-sejarah::before   { background: #ffd700; }
+    .color-bindo::before     { background: #ff4500; }
+    .color-binggris::before  { background: #ffb347; }
+    .color-mtk::before       { background: #ee0979; }
+    .color-bjawa::before     { background: #ff8c00; }
+    .color-kka::before       { background: #ff3d00; }
+    .color-senbud::before    { background: #ffca28; }
+    .color-informatika::before { background: #ff6d00; }
+    .color-ipas::before      { background: #ff9100; }
+    .color-pjok::before      { background: #ff1744; }
+    .color-dasarprog::before { background: #e65100; }
+    .color-rpl::before       { background: #bf360c; }
+    .color-desain::before    { background: #ffa000; }
+    .color-manual::before    { background: #fff176; }
+
+    /* ===== MODAL TAMBAH TUGAS ===== */
+    .modal-overlay {
+      display: none;
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,0.75);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(4px);
+    }
+    .modal-overlay.open { display: flex; }
+
+    .modal {
+      background: linear-gradient(160deg, #2d1200, #3d1a00);
+      border: 2px solid rgba(255,106,0,0.4);
+      border-radius: 20px;
+      padding: 28px 28px 24px;
+      width: 90%;
+      max-width: 480px;
+      box-shadow: 0 20px 60px rgba(255,106,0,0.3);
+      animation: popIn 0.3s cubic-bezier(0.34,1.56,0.64,1);
+      position: relative;
+    }
+    @keyframes popIn {
+      from { transform: scale(0.7); opacity: 0; }
+      to   { transform: scale(1);   opacity: 1; }
+    }
+
+    .modal h2 {
+      font-family: 'Bangers', cursive;
+      font-size: 1.7rem;
+      letter-spacing: 2px;
+      color: var(--fire3);
+      margin-bottom: 18px;
+      text-align: center;
+    }
+
+    .modal label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #ffb347;
+      margin-bottom: 5px;
+      margin-top: 12px;
+    }
+
+    .modal input, .modal select, .modal textarea {
+      width: 100%;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,106,0,0.3);
+      border-radius: 10px;
+      color: #fff;
+      padding: 9px 13px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .modal input:focus, .modal select:focus, .modal textarea:focus {
+      border-color: #ff6a00;
+      box-shadow: 0 0 0 3px rgba(255,106,0,0.15);
+    }
+    .modal textarea { resize: vertical; min-height: 80px; }
+    .modal select option { background: #2d1200; }
+
+    .modal-btns {
+      display: flex; gap: 10px; margin-top: 20px;
+    }
+    .modal-btns button { flex: 1; }
+
+    .modal .close-btn {
+      position: absolute;
+      top: 12px; right: 14px;
+      background: none; border: none;
+      color: #ff6a00; font-size: 1.4rem;
+      cursor: pointer; line-height: 1;
+    }
+    .modal .close-btn:hover { color: #fff; }
+
+    /* ===== STATS BAR ===== */
+    .stats-bar {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 22px;
+    }
+    .stat-chip {
+      background: rgba(61,26,0,0.7);
+      border: 1px solid rgba(255,106,0,0.25);
+      border-radius: 30px;
+      padding: 7px 18px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      display: flex; align-items: center; gap: 7px;
+    }
+    .stat-chip .dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+    }
+    .dot-total  { background: #ffb347; }
+    .dot-selesai{ background: #69f0ae; }
+    .dot-belum  { background: #ff6b6b; }
+
+    /* ===== PROGRESS BAR ===== */
+    .progress-wrap {
+      background: rgba(255,255,255,0.08);
+      border-radius: 20px;
+      height: 8px;
+      margin-bottom: 22px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      border-radius: 20px;
+      background: linear-gradient(90deg, #ff6a00, #ffd700);
+      transition: width 0.5s ease;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      position: relative; z-index: 10;
+      text-align: center;
+      padding: 20px;
+      color: rgba(255,106,0,0.4);
+      font-size: 0.8rem;
+      margin-top: 30px;
+      border-top: 1px solid rgba(255,106,0,0.1);
+    }
+
+    /* ===== HALAMAN GURU ===== */
+    .guru-page { display: none; animation: fadeIn 0.35s ease; }
+    .guru-page.active { display: block; }
+
+    .guru-toolbar {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+    .guru-search {
+      flex: 1;
+      min-width: 200px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,106,0,0.35);
+      border-radius: 30px;
+      color: #fff;
+      padding: 9px 18px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .guru-search:focus { border-color: #ff6a00; box-shadow: 0 0 0 3px rgba(255,106,0,0.15); }
+    .guru-search::placeholder { color: #a06030; }
+
+    .filter-mapel {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,106,0,0.35);
+      border-radius: 30px;
+      color: #ffb347;
+      padding: 9px 16px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.88rem;
+      outline: none;
+      cursor: pointer;
+    }
+    .filter-mapel option { background: #2d1200; }
+
+    /* Spreadsheet table */
+    .spreadsheet-wrap {
+      overflow-x: auto;
+      border-radius: 16px;
+      border: 1px solid rgba(255,106,0,0.2);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    }
+
+    table.guru-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+      min-width: 700px;
+    }
+
+    .guru-table thead tr {
+      background: linear-gradient(135deg, #3d1a00, #5a2500);
+      position: sticky;
+      top: 0;
+      z-index: 5;
+    }
+
+    .guru-table thead th {
+      padding: 13px 16px;
+      text-align: left;
+      color: #ffd700;
+      font-weight: 800;
+      font-size: 0.82rem;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      border-bottom: 2px solid rgba(255,106,0,0.4);
+      white-space: nowrap;
+      cursor: pointer;
+      user-select: none;
+      transition: color 0.2s;
+    }
+    .guru-table thead th:hover { color: #ff6a00; }
+    .guru-table thead th .sort-icon { margin-left: 5px; opacity: 0.5; font-size: 0.75rem; }
+    .guru-table thead th.sorted .sort-icon { opacity: 1; color: #ff6a00; }
+
+    .guru-table tbody tr {
+      background: rgba(45,18,0,0.6);
+      border-bottom: 1px solid rgba(255,106,0,0.1);
+      transition: background 0.2s;
+    }
+    .guru-table tbody tr:nth-child(even) {
+      background: rgba(61,26,0,0.5);
+    }
+    .guru-table tbody tr:hover {
+      background: rgba(255,106,0,0.12);
+    }
+
+    .guru-table td {
+      padding: 12px 16px;
+      vertical-align: middle;
+      color: #e8d5b0;
+    }
+
+    .guru-table td.no-col {
+      color: #ff8c00;
+      font-weight: 800;
+      font-size: 0.85rem;
+      width: 40px;
+      text-align: center;
+    }
+
+    .guru-foto {
+      font-size: 1.6rem;
+      text-align: center;
+      width: 50px;
+    }
+
+    .guru-nama {
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .mapel-badge {
+      display: inline-block;
+      padding: 3px 12px;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #1a0a00;
+    }
+
+    .kelas-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+    .kelas-chip {
+      background: rgba(255,106,0,0.15);
+      border: 1px solid rgba(255,106,0,0.3);
+      border-radius: 10px;
+      padding: 2px 8px;
+      font-size: 0.75rem;
+      color: #ffb347;
+      white-space: nowrap;
+    }
+
+    .jadwal-cell {
+      font-size: 0.78rem;
+      color: #d4b896;
+      line-height: 1.7;
+    }
+    .jadwal-hari {
+      color: #ffd700;
+      font-weight: 700;
+    }
+
+    .kontak-cell {
+      font-size: 0.78rem;
+      color: #80c8ff;
+    }
+
+    .guru-table tfoot tr {
+      background: rgba(61,26,0,0.8);
+      border-top: 2px solid rgba(255,106,0,0.3);
+    }
+    .guru-table tfoot td {
+      padding: 10px 16px;
+      color: #ff8c00;
+      font-weight: 700;
+      font-size: 0.82rem;
+    }
+
+    .no-result {
+      text-align: center;
+      padding: 40px;
+      color: #ff8c00;
+      font-size: 1rem;
+    }
+
+    /* Kartu ringkasan guru */
+    .guru-summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+    .summary-card {
+      background: rgba(61,26,0,0.7);
+      border: 1px solid rgba(255,106,0,0.2);
+      border-radius: 14px;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .summary-card .s-icon { font-size: 1.8rem; }
+    .summary-card .s-info .s-num {
+      font-family: 'Bangers', cursive;
+      font-size: 1.6rem;
+      color: #ffd700;
+      line-height: 1;
+    }
+    .summary-card .s-info .s-label {
+      font-size: 0.78rem;
+      color: #ffb347;
+      font-weight: 600;
+    }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 2rem; }
+      .tab-btn  { padding: 8px 14px; font-size: 0.82rem; }
+      .modal    { padding: 22px 18px 18px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- CHARIZARD SVG + BODY HTML injected via JS below -->
+
+<!-- ===== FLAME PARTICLES ===== -->
+<div class="flames" id="flames"></div>
+
+<!-- ===== HEADER ===== -->
+<header>
+  <!-- Charizard SVG illustration -->
+  <svg class="charizard-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <!-- Body -->
+    <ellipse cx="100" cy="130" rx="38" ry="45" fill="#ff6a00"/>
+    <!-- Belly -->
+    <ellipse cx="100" cy="138" rx="24" ry="30" fill="#ffb347"/>
+    <!-- Neck -->
+    <rect x="88" y="88" width="24" height="22" rx="8" fill="#ff6a00"/>
+    <!-- Head -->
+    <ellipse cx="100" cy="78" rx="30" ry="28" fill="#ff6a00"/>
+    <!-- Snout -->
+    <ellipse cx="100" cy="88" rx="16" ry="10" fill="#ff8c00"/>
+    <!-- Nostrils -->
+    <circle cx="94" cy="86" r="2.5" fill="#cc3300"/>
+    <circle cx="106" cy="86" r="2.5" fill="#cc3300"/>
+    <!-- Eyes -->
+    <ellipse cx="88" cy="70" rx="7" ry="8" fill="#fff"/>
+    <ellipse cx="112" cy="70" rx="7" ry="8" fill="#fff"/>
+    <circle cx="89" cy="71" r="4" fill="#1a0a00"/>
+    <circle cx="113" cy="71" r="4" fill="#1a0a00"/>
+    <circle cx="90" cy="69" r="1.5" fill="#fff"/>
+    <circle cx="114" cy="69" r="1.5" fill="#fff"/>
+    <!-- Horns -->
+    <polygon points="82,55 76,38 88,52" fill="#cc3300"/>
+    <polygon points="118,55 124,38 112,52" fill="#cc3300"/>
+    <!-- Ears/spikes -->
+    <polygon points="78,62 68,48 84,60" fill="#ff4500"/>
+    <polygon points="122,62 132,48 116,60" fill="#ff4500"/>
+    <!-- Wings -->
+    <path d="M62,110 Q20,70 30,40 Q50,80 68,100 Z" fill="#4a90e2" opacity="0.9"/>
+    <path d="M138,110 Q180,70 170,40 Q150,80 132,100 Z" fill="#4a90e2" opacity="0.9"/>
+    <path d="M62,110 Q20,70 30,40 Q50,80 68,100 Z" fill="none" stroke="#2255aa" stroke-width="1.5"/>
+    <path d="M138,110 Q180,70 170,40 Q150,80 132,100 Z" fill="none" stroke="#2255aa" stroke-width="1.5"/>
+    <!-- Wing veins -->
+    <line x1="62" y1="110" x2="30" y2="40" stroke="#2255aa" stroke-width="1" opacity="0.5"/>
+    <line x1="138" y1="110" x2="170" y2="40" stroke="#2255aa" stroke-width="1" opacity="0.5"/>
+    <!-- Arms -->
+    <path d="M68,120 Q48,130 44,148 Q52,140 68,135 Z" fill="#ff6a00"/>
+    <path d="M132,120 Q152,130 156,148 Q148,140 132,135 Z" fill="#ff6a00"/>
+    <!-- Claws left -->
+    <line x1="44" y1="148" x2="38" y2="158" stroke="#cc3300" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="44" y1="148" x2="44" y2="160" stroke="#cc3300" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="44" y1="148" x2="50" y2="158" stroke="#cc3300" stroke-width="2.5" stroke-linecap="round"/>
+    <!-- Claws right -->
+    <line x1="156" y1="148" x2="150" y2="158" stroke="#cc3300" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="156" y1="148" x2="156" y2="160" stroke="#cc3300" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="156" y1="148" x2="162" y2="158" stroke="#cc3300" stroke-width="2.5" stroke-linecap="round"/>
+    <!-- Legs -->
+    <path d="M82,170 Q78,185 72,192" stroke="#ff6a00" stroke-width="12" stroke-linecap="round" fill="none"/>
+    <path d="M118,170 Q122,185 128,192" stroke="#ff6a00" stroke-width="12" stroke-linecap="round" fill="none"/>
+    <!-- Feet -->
+    <ellipse cx="72" cy="193" rx="12" ry="6" fill="#ff4500"/>
+    <ellipse cx="128" cy="193" rx="12" ry="6" fill="#ff4500"/>
+    <!-- Tail -->
+    <path d="M138,165 Q165,170 172,155 Q178,140 165,132" stroke="#ff6a00" stroke-width="10" stroke-linecap="round" fill="none"/>
+    <!-- Tail flame -->
+    <ellipse cx="163" cy="126" rx="10" ry="14" fill="#ffd700" opacity="0.9"/>
+    <ellipse cx="163" cy="122" rx="7" ry="10" fill="#ff6a00"/>
+    <ellipse cx="163" cy="118" rx="4" ry="7" fill="#fff"/>
+    <!-- Mouth -->
+    <path d="M92,92 Q100,98 108,92" stroke="#cc3300" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <!-- Teeth -->
+    <polygon points="96,92 94,98 98,92" fill="#fff"/>
+    <polygon points="104,92 102,98 106,92" fill="#fff"/>
+  </svg>
+  <h1>🔥 JADWAL PR SEKOLAH 🔥</h1>
+  <p>Charizard Edition — Senin s/d Jumat</p>
+</header>
+
+<div class="tanggal-info" id="tanggalInfo"></div>
+
+<!-- ===== MODAL TAMBAH TUGAS ===== -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <button class="close-btn" onclick="tutupModal()">✕</button>
+    <h2>🔥 Tambah Tugas Baru</h2>
+
+    <label>Mata Pelajaran</label>
+    <select id="inputMapel">
+      <option value="">-- Pilih Mapel --</option>
+      <option value="PKn">PKn</option>
+      <option value="Sejarah">Sejarah</option>
+      <option value="Bhs. Indonesia">Bhs. Indonesia</option>
+      <option value="Bhs. Inggris">Bhs. Inggris</option>
+      <option value="Matematika">Matematika</option>
+      <option value="Bhs. Jawa">Bhs. Jawa</option>
+      <option value="KKA">KKA</option>
+      <option value="Seni Budaya">Seni Budaya</option>
+      <option value="Informatika">Informatika</option>
+      <option value="IPAS">IPAS</option>
+      <option value="PJOK">PJOK</option>
+      <option value="Dasar Pemrograman">Dasar Pemrograman</option>
+      <option value="RPL Informatika">RPL Informatika</option>
+      <option value="Desain Grafis">Desain Grafis</option>
+      <option value="Lainnya">Lainnya / Mapel Lain</option>
+    </select>
+
+    <label>Nama Guru</label>
+    <input type="text" id="inputGuru" placeholder="Contoh: Bu Sari, Pak Budi..." />
+
+    <label>Hari Pengumpulan</label>
+    <select id="inputHari">
+      <option value="senin">Senin</option>
+      <option value="selasa">Selasa</option>
+      <option value="rabu">Rabu</option>
+      <option value="kamis">Kamis</option>
+      <option value="jumat">Jum'at</option>
+    </select>
+
+    <label>Deskripsi Tugas</label>
+    <textarea id="inputTugas" placeholder="Tulis detail tugas dari guru..."></textarea>
+
+    <label>Deadline (Tanggal)</label>
+    <input type="date" id="inputDeadline" />
+
+    <div class="modal-btns">
+      <button class="fire-btn secondary" onclick="tutupModal()">Batal</button>
+      <button class="fire-btn primary" onclick="tambahTugas()">🔥 Tambahkan!</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== MAIN CONTAINER ===== -->
+<div class="container">
+
+  <div class="top-btns">
+    <button class="fire-btn primary" onclick="acakJadwal()">🔀 Acak Ulang Jadwal</button>
+    <button class="fire-btn secondary" onclick="bukaModal()">➕ Tambah Tugas Manual</button>
+    <button class="fire-btn primary" onclick="toggleGuruPage()" id="btnGuru" style="background:linear-gradient(135deg,#ffd700,#ff8c00);color:#1a0a00;">👨‍🏫 Data Guru</button>
+  </div>
+
+  <!-- Stats -->
+  <div id="prSection">
+    <div class="stats-bar">
+      <div class="stat-chip"><span class="dot dot-total"></span> Total: <strong id="statTotal">0</strong></div>
+      <div class="stat-chip"><span class="dot dot-selesai"></span> Selesai: <strong id="statSelesai">0</strong></div>
+      <div class="stat-chip"><span class="dot dot-belum"></span> Belum: <strong id="statBelum">0</strong></div>
+    </div>
+    <div class="progress-wrap"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+
+    <div class="hari-tabs">
+      <button class="tab-btn active" onclick="showHari('senin', this)">Senin</button>
+      <button class="tab-btn" onclick="showHari('selasa', this)">Selasa</button>
+      <button class="tab-btn" onclick="showHari('rabu', this)">Rabu</button>
+      <button class="tab-btn" onclick="showHari('kamis', this)">Kamis</button>
+      <button class="tab-btn" onclick="showHari('jumat', this)">Jum'at</button>
+    </div>
+
+    <div id="senin"  class="hari-panel active"></div>
+    <div id="selasa" class="hari-panel"></div>
+    <div id="rabu"   class="hari-panel"></div>
+    <div id="kamis"  class="hari-panel"></div>
+    <div id="jumat"  class="hari-panel"></div>
+  </div>
+
+  <!-- ===== HALAMAN DATA GURU ===== -->
+  <div class="guru-page" id="guruPage">
+
+    <div class="hari-title" style="margin-bottom:18px;">👨‍🏫 Spreadsheet Data Guru <span class="badge">14 Guru</span></div>
+
+    <!-- Ringkasan -->
+    <div class="guru-summary" id="guruSummary"></div>
+
+    <!-- Toolbar -->
+    <div class="guru-toolbar">
+      <input class="guru-search" type="text" id="guruSearch" placeholder="🔍 Cari nama guru atau mapel..." oninput="filterGuru()" />
+      <select class="filter-mapel" id="filterMapel" onchange="filterGuru()">
+        <option value="">Semua Mapel</option>
+      </select>
+    </div>
+
+    <!-- Tabel Spreadsheet -->
+    <div class="spreadsheet-wrap">
+      <table class="guru-table" id="guruTable">
+        <thead>
+          <tr>
+            <th onclick="sortGuru('id')">#<span class="sort-icon">↕</span></th>
+            <th style="width:50px">Foto</th>
+            <th onclick="sortGuru('nama')">Nama Guru<span class="sort-icon">↕</span></th>
+            <th onclick="sortGuru('mapel')">Mata Pelajaran<span class="sort-icon">↕</span></th>
+            <th>Kelas yang Diajar</th>
+            <th>Jadwal Mengajar</th>
+            <th>Kontak</th>
+          </tr>
+        </thead>
+        <tbody id="guruTbody"></tbody>
+        <tfoot>
+          <tr>
+            <td colspan="7" id="guruFooter">Menampilkan 14 dari 14 guru</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+
+  </div><!-- /guru-page -->
+
+</div>
+
+<footer>🔥 Charizard PR Tracker &mdash; © 2026 &mdash; Semangat Belajar! 🔥</footer>
+
+<script>
+  // ===================== DATA MAPEL =====================
+  const semuaMapel = [
+    {
+      id: 'pkn',
+      nama: 'PKn',
+      kelas: 'color-pkn',
+      tugasList: [
+        'Buat rangkuman Bab 3 tentang Pancasila (min. 1 halaman)',
+        'Jawab soal latihan hal. 45 no. 1–10',
+        'Buat poster nilai-nilai Pancasila',
+        'Analisis berita terkait demokrasi di Indonesia',
+        'Kerjakan LKS halaman 22–24',
+      ]
+    },
+    {
+      id: 'sejarah',
+      nama: 'Sejarah',
+      kelas: 'color-sejarah',
+      tugasList: [
+        'Buat timeline peristiwa Proklamasi Kemerdekaan',
+        'Rangkum materi Kerajaan Majapahit (min. 2 halaman)',
+        'Jawab pertanyaan esai tentang penjajahan Belanda',
+        'Buat peta konsep Pergerakan Nasional Indonesia',
+        'Kerjakan soal pilihan ganda hal. 60 no. 1–15',
+      ]
+    },
+    {
+      id: 'bindo',
+      nama: 'Bhs. Indonesia',
+      kelas: 'color-bindo',
+      tugasList: [
+        'Tulis teks deskripsi tentang lingkungan sekolah (min. 200 kata)',
+        'Buat ringkasan cerpen "Robohnya Surau Kami"',
+        'Kerjakan soal teks eksposisi hal. 78–80',
+        'Buat puisi bertema alam bebas (min. 3 bait)',
+        'Analisis unsur intrinsik novel yang sudah dibaca',
+      ]
+    },
+    {
+      id: 'binggris',
+      nama: 'Bhs. Inggris',
+      kelas: 'color-binggris',
+      tugasList: [
+        'Write a descriptive text about your favorite place (min. 150 words)',
+        'Complete grammar exercises on Simple Past Tense (page 55)',
+        'Translate 10 sentences from Indonesian to English',
+        'Make a dialogue about asking and giving directions',
+        'Read the text and answer comprehension questions (page 70)',
+      ]
+    },
+    {
+      id: 'mtk',
+      nama: 'Matematika',
+      kelas: 'color-mtk',
+      tugasList: [
+        'Kerjakan soal persamaan linear dua variabel hal. 34 no. 1–10',
+        'Buat 5 soal cerita tentang bilangan bulat beserta jawabannya',
+        'Selesaikan latihan fungsi kuadrat hal. 88–90',
+        'Kerjakan soal statistika (mean, median, modus) hal. 102',
+        'Buktikan teorema Pythagoras dengan 3 contoh soal',
+      ]
+    },
+    {
+      id: 'bjawa',
+      nama: 'Bhs. Jawa',
+      kelas: 'color-bjawa',
+      tugasList: [
+        'Nulis geguritan tema alam (minimal 4 pada)',
+        'Gawe ringkesan crita rakyat Jawa Tengah',
+        'Jawab pitakon bab teks pawarta hal. 25',
+        'Terjemahake 10 ukara basa Indonesia menyang basa Jawa krama',
+        'Gawe pacelathon basa Jawa krama inggil (2 wong)',
+      ]
+    },
+    {
+      id: 'kka',
+      nama: 'KKA',
+      kelas: 'color-kka',
+      tugasList: [
+        'Buat laporan kegiatan praktikum minggu lalu',
+        'Kerjakan soal evaluasi Bab 2 hal. 40–42',
+        'Buat diagram alur proses produksi sederhana',
+        'Rangkum materi tentang K3 (Keselamatan Kerja)',
+        'Buat portofolio hasil karya minggu ini',
+      ]
+    },
+    {
+      id: 'senbud',
+      nama: 'Seni Budaya',
+      kelas: 'color-senbud',
+      tugasList: [
+        'Buat sketsa gambar bertema "Keindahan Nusantara"',
+        'Tulis sejarah singkat tari tradisional daerahmu',
+        'Buat kolase dari bahan bekas (foto dilampirkan)',
+        'Analisis unsur-unsur musik dalam lagu daerah',
+        'Buat karya seni rupa 2D dengan teknik pointilisme',
+      ]
+    },
+    {
+      id: 'informatika',
+      nama: 'Informatika',
+      kelas: 'color-informatika',
+      tugasList: [
+        'Buat flowchart algoritma mencari bilangan prima',
+        'Kerjakan latihan Microsoft Excel hal. 55–57',
+        'Buat presentasi PowerPoint tentang dampak media sosial',
+        'Tulis pseudocode untuk program kalkulator sederhana',
+        'Rangkum materi jaringan komputer (LAN, WAN, MAN)',
+      ]
+    },
+    {
+      id: 'ipas',
+      nama: 'IPAS',
+      kelas: 'color-ipas',
+      tugasList: [
+        'Buat laporan pengamatan ekosistem di sekitar rumah',
+        'Jawab soal tentang sistem tata surya hal. 66–68',
+        'Buat mind map siklus air dan penjelasannya',
+        'Kerjakan soal gaya dan gerak hal. 80 no. 1–12',
+        'Buat percobaan sederhana tentang perubahan wujud benda',
+      ]
+    },
+    {
+      id: 'pjok',
+      nama: 'PJOK',
+      kelas: 'color-pjok',
+      tugasList: [
+        'Buat laporan tentang teknik dasar bola voli',
+        'Tulis manfaat olahraga rutin bagi kesehatan (min. 300 kata)',
+        'Buat jadwal latihan fisik selama 1 minggu',
+        'Rangkum peraturan permainan futsal',
+        'Buat video pendek gerakan pemanasan (kirim ke grup)',
+      ]
+    },
+    {
+      id: 'dasarprog',
+      nama: 'Dasar Pemrograman',
+      kelas: 'color-dasarprog',
+      tugasList: [
+        'Buat program Python untuk menghitung luas segitiga',
+        'Kerjakan latihan struktur percabangan (if-else) di modul hal. 30',
+        'Buat program sederhana menggunakan perulangan for',
+        'Debug program yang diberikan guru dan jelaskan errornya',
+        'Buat flowchart + kode program kalkulator 4 operasi',
+      ]
+    },
+    {
+      id: 'rpl',
+      nama: 'RPL Informatika',
+      kelas: 'color-rpl',
+      tugasList: [
+        'Buat desain database sederhana untuk aplikasi perpustakaan',
+        'Kerjakan soal tentang siklus hidup pengembangan perangkat lunak',
+        'Buat wireframe aplikasi mobile sederhana',
+        'Tulis dokumentasi teknis program yang sudah dibuat',
+        'Analisis kebutuhan sistem untuk aplikasi kasir sederhana',
+      ]
+    },
+    {
+      id: 'desain',
+      nama: 'Desain Grafis',
+      kelas: 'color-desain',
+      tugasList: [
+        'Buat poster digital bertema "Hari Pendidikan Nasional"',
+        'Edit foto menggunakan Adobe Photoshop (kirim file .psd)',
+        'Buat logo sederhana menggunakan CorelDraw',
+        'Buat infografis tentang manfaat membaca buku',
+        'Desain banner media sosial untuk acara sekolah',
+      ]
+    },
+  ];
+
+  const hariList = ['senin', 'selasa', 'rabu', 'kamis', 'jumat'];
+  const hariLabel = {
+    senin: 'Senin', selasa: 'Selasa', rabu: 'Rabu', kamis: 'Kamis', jumat: "Jum'at"
+  };
+
+  // Tugas manual dari guru (disimpan di sini)
+  let tugasManual = JSON.parse(localStorage.getItem('tugasManual') || '[]');
+  // Status selesai per card (key = id unik)
+  let statusMap = JSON.parse(localStorage.getItem('statusMap') || '{}');
+  // Jadwal acak tersimpan
+  let jadwalAcak = JSON.parse(localStorage.getItem('jadwalAcak') || 'null');
+
+  // ===================== FUNGSI ACAK =====================
+  function shuffle(arr) {
+    const a = [...arr];
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+
+  function acakJadwal() {
+    const shuffledMapel = shuffle(semuaMapel);
+    const jadwal = { senin: [], selasa: [], rabu: [], kamis: [], jumat: [] };
+    const distribusi = [3, 3, 3, 3, 2];
+    let idx = 0;
+    hariList.forEach((hari, i) => {
+      for (let k = 0; k < distribusi[i]; k++) {
+        const mapel = shuffledMapel[idx++];
+        const tugas = mapel.tugasList[Math.floor(Math.random() * mapel.tugasList.length)];
+        jadwal[hari].push({
+          id: `auto_${hari}_${mapel.id}_${Date.now()}_${Math.random()}`,
+          mapel: mapel.nama,
+          kelas: mapel.kelas,
+          tugas: tugas,
+          deadline: hariLabel[hari] + ' depan',
+          guru: '',
+          isManual: false
+        });
+      }
+    });
+    jadwalAcak = jadwal;
+    localStorage.setItem('jadwalAcak', JSON.stringify(jadwalAcak));
+    renderSemua();
+  }
+
+  // ===================== RENDER =====================
+  function renderSemua() {
+    hariList.forEach(hari => renderHari(hari));
+    updateStats();
+  }
+
+  function renderHari(hari) {
+    const panel = document.getElementById(hari);
+    const otomatis = (jadwalAcak && jadwalAcak[hari]) ? jadwalAcak[hari] : [];
+    const manual   = tugasManual.filter(t => t.hari === hari);
+    const semua    = [...otomatis, ...manual];
+
+    let html = `<div class="hari-title">🔥 ${hariLabel[hari]} <span class="badge">${semua.length} Tugas</span></div>`;
+
+    if (semua.length === 0) {
+      html += `<div style="text-align:center;color:#ff8c00;padding:40px;font-size:1rem;">Tidak ada tugas hari ini 🎉</div>`;
+    } else {
+      html += `<div class="pr-grid">`;
+      semua.forEach(item => {
+        const isDone = statusMap[item.id] === true;
+        const colorClass = item.isManual ? 'color-manual' : item.kelas;
+        const guruTag = item.guru ? `<div class="guru-tag">👨‍🏫 ${item.guru}</div>` : '';
+        const delBtn  = item.isManual
+          ? `<button class="btn-del" onclick="hapusTugas('${item.id}')" title="Hapus">🗑</button>`
+          : '';
+        html += `
+        <div class="pr-card ${colorClass} ${isDone ? 'done' : ''}" id="card_${item.id.replace(/[^a-zA-Z0-9]/g,'_')}">
+          <div class="card-top">
+            <div class="mapel">📖 ${item.mapel}${item.isManual ? ' <span style="font-size:0.7rem;color:#ffd700;font-weight:600;">[Manual]</span>' : ''}</div>
+            <div class="check-btns">
+              <button class="btn-check" onclick="setStatus('${item.id}', true)"  title="Selesai">✓</button>
+              <button class="btn-x"     onclick="setStatus('${item.id}', false)" title="Belum">✗</button>
+              ${delBtn}
+            </div>
+          </div>
+          <div class="tugas">${item.tugas}</div>
+          ${guruTag}
+          <div class="deadline">⏰ ${item.deadline}</div>
+          <div class="status-label ${isDone ? 'selesai' : 'belum'}">${isDone ? '✅ Sudah Selesai' : '❌ Belum Selesai'}</div>
+        </div>`;
+      });
+      html += `</div>`;
+    }
+    panel.innerHTML = html;
+  }
+
+  // ===================== STATUS ✓ / ✗ =====================
+  function setStatus(id, done) {
+    statusMap[id] = done;
+    localStorage.setItem('statusMap', JSON.stringify(statusMap));
+    // Cari hari mana card ini berada lalu re-render
+    hariList.forEach(hari => {
+      const otomatis = (jadwalAcak && jadwalAcak[hari]) ? jadwalAcak[hari] : [];
+      const manual   = tugasManual.filter(t => t.hari === hari);
+      const semua    = [...otomatis, ...manual];
+      if (semua.find(t => t.id === id)) renderHari(hari);
+    });
+    updateStats();
+  }
+
+  // ===================== HAPUS TUGAS MANUAL =====================
+  function hapusTugas(id) {
+    if (!confirm('Hapus tugas ini?')) return;
+    tugasManual = tugasManual.filter(t => t.id !== id);
+    localStorage.setItem('tugasManual', JSON.stringify(tugasManual));
+    renderSemua();
+  }
+
+  // ===================== STATS =====================
+  function updateStats() {
+    let total = 0, selesai = 0;
+    hariList.forEach(hari => {
+      const otomatis = (jadwalAcak && jadwalAcak[hari]) ? jadwalAcak[hari] : [];
+      const manual   = tugasManual.filter(t => t.hari === hari);
+      const semua    = [...otomatis, ...manual];
+      total += semua.length;
+      semua.forEach(t => { if (statusMap[t.id]) selesai++; });
+    });
+    const belum = total - selesai;
+    document.getElementById('statTotal').textContent   = total;
+    document.getElementById('statSelesai').textContent = selesai;
+    document.getElementById('statBelum').textContent   = belum;
+    const pct = total > 0 ? Math.round((selesai / total) * 100) : 0;
+    document.getElementById('progressFill').style.width = pct + '%';
+  }
+
+  // ===================== MODAL =====================
+  function bukaModal() {
+    document.getElementById('modalOverlay').classList.add('open');
+    // Set default hari ke tab aktif
+    const activeTab = document.querySelector('.tab-btn.active');
+    if (activeTab) {
+      const hariText = activeTab.textContent.toLowerCase().trim();
+      const hariVal = hariList.find(h => hariLabel[h].toLowerCase().startsWith(hariText.slice(0,3)));
+      if (hariVal) document.getElementById('inputHari').value = hariVal;
+    }
+  }
+
+  function tutupModal() {
+    document.getElementById('modalOverlay').classList.remove('open');
+    document.getElementById('inputMapel').value   = '';
+    document.getElementById('inputGuru').value    = '';
+    document.getElementById('inputTugas').value   = '';
+    document.getElementById('inputDeadline').value = '';
+  }
+
+  // Tutup modal klik luar
+  document.getElementById('modalOverlay').addEventListener('click', function(e) {
+    if (e.target === this) tutupModal();
+  });
+
+  function tambahTugas() {
+    const mapel    = document.getElementById('inputMapel').value.trim();
+    const guru     = document.getElementById('inputGuru').value.trim();
+    const hari     = document.getElementById('inputHari').value;
+    const tugas    = document.getElementById('inputTugas').value.trim();
+    const deadline = document.getElementById('inputDeadline').value;
+
+    if (!mapel)  { alert('Pilih mata pelajaran dulu!'); return; }
+    if (!tugas)  { alert('Isi deskripsi tugas dulu!'); return; }
+
+    const deadlineStr = deadline
+      ? '📅 ' + new Date(deadline).toLocaleDateString('id-ID', {day:'numeric',month:'long',year:'numeric'})
+      : hariLabel[hari] + ' depan';
+
+    const item = {
+      id: 'manual_' + Date.now() + '_' + Math.random(),
+      mapel, guru, hari, tugas,
+      deadline: deadlineStr,
+      kelas: 'color-manual',
+      isManual: true
+    };
+
+    tugasManual.push(item);
+    localStorage.setItem('tugasManual', JSON.stringify(tugasManual));
+    tutupModal();
+    renderSemua();
+    showHari(hari, [...document.querySelectorAll('.tab-btn')].find(b =>
+      b.textContent.toLowerCase().includes(hariLabel[hari].toLowerCase().slice(0,3))
+    ));
+  }
+
+  // ===================== TABS =====================
+  function showHari(hari, btn) {
+    document.querySelectorAll('.hari-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(hari).classList.add('active');
+    if (btn) btn.classList.add('active');
+  }
+
+  // ===================== TANGGAL =====================
+  function tampilkanTanggal() {
+    const now = new Date();
+    const opsi = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    document.getElementById('tanggalInfo').textContent =
+      '🔥 ' + now.toLocaleDateString('id-ID', opsi);
+  }
+
+  // ===================== FLAME PARTICLES =====================
+  function buatApi() {
+    const container = document.getElementById('flames');
+    const colors = ['#ff6a00','#ff4500','#ffd700','#ff8c00','#ee0979','#ffb347'];
+    for (let i = 0; i < 18; i++) {
+      const f = document.createElement('div');
+      f.className = 'flame';
+      const size = 20 + Math.random() * 30;
+      f.style.cssText = `
+        left: ${Math.random() * 100}%;
+        width: ${size}px;
+        height: ${size * 1.6}px;
+        background: ${colors[Math.floor(Math.random() * colors.length)]};
+        animation-delay: ${Math.random() * 2}s;
+        animation-duration: ${1.5 + Math.random() * 1.5}s;
+        opacity: 0;
+      `;
+      container.appendChild(f);
+    }
+  }
+
+  // ===================== GURU PAGE =====================
+  let guruSortKey = 'id';
+  let guruSortAsc = true;
+  let guruPageOpen = false;
+
+  function toggleGuruPage() {
+    guruPageOpen = !guruPageOpen;
+    document.getElementById('guruPage').classList.toggle('active', guruPageOpen);
+    document.getElementById('prSection').style.display = guruPageOpen ? 'none' : 'block';
+    const btn = document.getElementById('btnGuru');
+    btn.textContent = guruPageOpen ? '📚 Kembali ke PR' : '👨‍🏫 Data Guru';
+    if (guruPageOpen) {
+      renderGuruSummary();
+      populateFilterMapel();
+      renderGuruTable(dataGuru);
+    }
+  }
+
+  function renderGuruSummary() {
+    const totalGuru   = dataGuru.length;
+    const totalMapel  = [...new Set(dataGuru.map(g => g.mapel))].length;
+    const totalKelas  = [...new Set(dataGuru.flatMap(g => g.kelas))].length;
+    const totalSesi   = dataGuru.reduce((acc, g) => acc + Object.keys(g.jadwal).length, 0);
+    document.getElementById('guruSummary').innerHTML = `
+      <div class="summary-card"><div class="s-icon">👨‍🏫</div><div class="s-info"><div class="s-num">${totalGuru}</div><div class="s-label">Total Guru</div></div></div>
+      <div class="summary-card"><div class="s-icon">📚</div><div class="s-info"><div class="s-num">${totalMapel}</div><div class="s-label">Mata Pelajaran</div></div></div>
+      <div class="summary-card"><div class="s-icon">🏫</div><div class="s-info"><div class="s-num">${totalKelas}</div><div class="s-label">Kelas Diajar</div></div></div>
+      <div class="summary-card"><div class="s-icon">📅</div><div class="s-info"><div class="s-num">${totalSesi}</div><div class="s-label">Sesi/Minggu</div></div></div>
+    `;
+  }
+
+  function populateFilterMapel() {
+    const sel = document.getElementById('filterMapel');
+    const mapels = [...new Set(dataGuru.map(g => g.mapel))].sort();
+    sel.innerHTML = '<option value="">Semua Mapel</option>' +
+      mapels.map(m => `<option value="${m}">${m}</option>`).join('');
+  }
+
+  function renderGuruTable(data) {
+    const tbody = document.getElementById('guruTbody');
+    if (data.length === 0) {
+      tbody.innerHTML = `<tr><td colspan="7" class="no-result">😔 Tidak ada guru yang ditemukan</td></tr>`;
+      document.getElementById('guruFooter').textContent = 'Menampilkan 0 dari ' + dataGuru.length + ' guru';
+      return;
+    }
+    tbody.innerHTML = data.map((g, i) => {
+      const jadwalHtml = Object.entries(g.jadwal)
+        .map(([h, jam]) => `<span class="jadwal-hari">${h.charAt(0).toUpperCase()+h.slice(1)}:</span> ${jam}`)
+        .join('<br>');
+      const kelasHtml = g.kelas.map(k => `<span class="kelas-chip">${k}</span>`).join('');
+      return `
+        <tr>
+          <td class="no-col">${i + 1}</td>
+          <td class="guru-foto">${g.foto}</td>
+          <td><div class="guru-nama">${g.nama}</div></td>
+          <td><span class="mapel-badge" style="background:${g.warna}">${g.mapel}</span></td>
+          <td><div class="kelas-list">${kelasHtml}</div></td>
+          <td><div class="jadwal-cell">${jadwalHtml}</div></td>
+          <td><div class="kontak-cell">✉️ ${g.kontak}</div></td>
+        </tr>`;
+    }).join('');
+    document.getElementById('guruFooter').textContent =
+      `Menampilkan ${data.length} dari ${dataGuru.length} guru`;
+  }
+
+  function filterGuru() {
+    const q     = document.getElementById('guruSearch').value.toLowerCase();
+    const mapel = document.getElementById('filterMapel').value;
+    let filtered = dataGuru.filter(g => {
+      const matchQ     = !q || g.nama.toLowerCase().includes(q) || g.mapel.toLowerCase().includes(q);
+      const matchMapel = !mapel || g.mapel === mapel;
+      return matchQ && matchMapel;
+    });
+    filtered = sortData(filtered);
+    renderGuruTable(filtered);
+  }
+
+  function sortData(data) {
+    return [...data].sort((a, b) => {
+      let va = a[guruSortKey], vb = b[guruSortKey];
+      if (typeof va === 'string') va = va.toLowerCase();
+      if (typeof vb === 'string') vb = vb.toLowerCase();
+      if (va < vb) return guruSortAsc ? -1 : 1;
+      if (va > vb) return guruSortAsc ?  1 : -1;
+      return 0;
+    });
+  }
+
+  function sortGuru(key) {
+    if (guruSortKey === key) guruSortAsc = !guruSortAsc;
+    else { guruSortKey = key; guruSortAsc = true; }
+    document.querySelectorAll('.guru-table thead th').forEach(th => {
+      th.classList.remove('sorted');
+      const icon = th.querySelector('.sort-icon');
+      if (icon) icon.textContent = '↕';
+    });
+    event.currentTarget.classList.add('sorted');
+    const si = event.currentTarget.querySelector('.sort-icon');
+    if (si) si.textContent = guruSortAsc ? '↑' : '↓';
+    filterGuru();
+  }
+
+  // ===================== INIT =====================
+  tampilkanTanggal();
+  buatApi();
+
+  if (!jadwalAcak) {
+    acakJadwal();
+  } else {
+    renderSemua();
+  }
+
+  // Otomatis buka tab hari ini
+  const hariIni = new Date().getDay();
+  const hariMap = { 1: 'senin', 2: 'selasa', 3: 'rabu', 4: 'kamis', 5: 'jumat' };
+  if (hariMap[hariIni]) {
+    const targetBtn = [...document.querySelectorAll('.tab-btn')]
+      .find(b => b.textContent.toLowerCase().includes(hariMap[hariIni].slice(0, 3)));
+    showHari(hariMap[hariIni], targetBtn);
+  }
+</script>
+</body>
+</html>
